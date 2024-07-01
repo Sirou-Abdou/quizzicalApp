@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1C1C1C;
+  font-family: 'karla', sans-serif;
+  color: #293264;
+}
+
+.container {
+  height: 550px;
+  width: 550px;
+  background-color: #F5F7FB;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -275px;
+  /* -1/2 width */
+  margin-top: -275px;
+  /* -1/2 height */
+}
+
+.start {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start--button {
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-family: 'inter', sans-serif;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.start--description{
+  margin: 20px;
+  font-size: 1rem;
+}
+
+.start--title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.top--image {
+  position: absolute;
+  right: 0;
+  height: 140px;
+  width: 140px;
+}
+
+.bottom--image {
+  position: absolute;
+  bottom: 0;
+  height: 80px;
+  width: 80px;
+}
+
+/* Quiz components style */
+.quiz{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 5px 75px;
+  padding-top:0;
+}
+
+.quiz--question{
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.quiz--answers {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.answer {
+  padding: 4px 20px;
+  border: solid 0.05rem #293264;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.quiz hr {
+  width: 400px;
+  border: none;
+  margin: 0;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  padding-left: 0;
+  padding-bottom:4px ;
+}
+
+.questions {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.check--buttom{
+  border: none;
+  background-color: #4D5B9E;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #F5F7FB;
+  font-family: 'inter';
+  font-size: 0.8rem;
+  margin-top: 20px;
+  cursor: pointer;
+}
