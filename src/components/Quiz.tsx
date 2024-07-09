@@ -1,28 +1,55 @@
 import {decode} from 'html-entities';
-import SingleChoice from './SingleChoice';
-import { useState } from 'react';
+import {nanoid} from 'nanoid'
+import {q} from '../App'
 
 export default function Quiz(props:{
-   title : string;
-   correct_answer: string;
-   incorrect_answers: string[]
-  }) {
+  key : string;
+  q : q;
+  handleClickAnswer(id:string,answer:string): void;
+  id: string
+  }) 
+  {
+    let answers:string[] = props.q.answers
 
-  const answersArray = props.incorrect_answers;
-  answersArray.splice((answersArray.length+1) * Math.random(),0, props.correct_answer)
+    function handleClick(answer:string) {
+      if(props.q.checked){
+        return
+      }
+      props.handleClickAnswer(props.id, answer)
+    }
 
-  const [userAnserws, setUserAnsewer] = useState<string[]>([])
-
-  return (
-    <div className='quiz'>
-        <h3 className='quiz--question'>
-          {decode(props.title)}
-        </h3>
-        <div className='quiz--answers'>
-          <SingleChoice 
-          answersArray = {answersArray}/>
-        </div>
-        <hr />
-    </div>
-  )
-}
+    const answersElement = answers.map( (answer:string) => {
+      let id:string|undefined = undefined
+      if(props.q.checked){
+        if(props.q.correct === answer){
+          id = 'correct'
+        }
+        else if (props.q.selected === answer){
+          id = 'incorrect'
+        }
+        else{
+          id = 'not-selected'
+        }
+      }
+      return(
+        <button 
+        key = {nanoid()}
+        id = {id}
+        className = {answer === props.q.selected ? 'answer selected' : 'answer'}
+        onClick = {() => handleClick(answer)}
+        >
+        {decode(answer)}
+        </button>
+      )
+    })
+    
+    return (
+      <div className='quiz-container'> 
+          <h3 className='quiz--title'>
+            {decode(props.q.question)}
+          </h3>
+          {answersElement}
+          <hr />
+      </div>
+    )
+  }

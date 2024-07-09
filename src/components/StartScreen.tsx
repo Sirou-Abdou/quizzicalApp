@@ -1,8 +1,7 @@
 import React from 'react'
 
 export default function StartScreen(props:{
-  isStart : boolean;
-  setIsStart:React.Dispatch<React.SetStateAction<boolean>>
+  start() : void
 }) {
   return (
     <div className='start'>
@@ -10,9 +9,9 @@ export default function StartScreen(props:{
         <p className='start--description'>Some description if needed</p>
         <button
           className='start--button'
-          onClick={()=>props.setIsStart(!props.isStart)}
+          onClick={()=>props.start()}
         >
-        Start quiz</button>
+        Start Quizzical</button>
     </div>
   )
 }
