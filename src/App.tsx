@@ -1,6 +1,5 @@
 import './App.css';
 import topBlobs from './assets/top_blobs.png';
-import bottomBlobs from './assets/bottom_blobs.png';
 import { useEffect, useState } from 'react';
 import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
@@ -26,7 +25,7 @@ export type q = {
 function App() {
   const [started, setStarted] = useState(false)
   const [count, setCount] = useState(0)
-  const [allQuestions, setAllQuestions] = useState<q[]>([])
+  const [questions, setQuestions] = useState<q[]>([])
   const [checked, setChecked] = useState(false)
   const [correct, setCorrect] = useState(0)
 
@@ -44,14 +43,14 @@ function App() {
       data.results.forEach((question:Question) => {
         q.push({id: nanoid(), answers: shuffleArray([...question.incorrect_answers, question.correct_answer]), question: question.question, correct:question.correct_answer, selected: null, checked: false})
       })
-      setAllQuestions(q)
+      setQuestions(q)
     }
     getQuestion()
   },[count])
 
   // Functions
   function handleClickAnswer(id:string, answer:string){
-    setAllQuestions(questions => questions.map(question => {
+    setQuestions(questions => questions.map(question => {
       return question.id === id ? {...question, selected : answer} : question
     }))
   }
@@ -67,7 +66,7 @@ function App() {
 
   function handleCheck() {
     let selected = true
-    allQuestions.forEach(question =>{
+    questions.forEach(question =>{
       if(question.selected === null){
         selected = false
         return
@@ -76,12 +75,12 @@ function App() {
     if (!selected){
       return
     }
-    setAllQuestions(questions => questions.map(question => {
+    setQuestions(questions => questions.map(question => {
       return {...question, checked:true}
     }))
     setChecked(true)
     let correct = 0
-    allQuestions.forEach(question => {
+    questions.forEach(question => {
       if(question.correct === question.selected){
         correct += 1
       }
@@ -89,7 +88,7 @@ function App() {
     setCorrect(correct)
   }
   
-  const questionElement = allQuestions ? allQuestions.map((item:q) =>{
+  const questionElement = questions ? questions.map((item:q) =>{
     return(
       <Quiz 
         key= {item.id}
@@ -102,8 +101,9 @@ function App() {
   return (
     <main>
       <div className="main--container">
-        {/* <img className="top--image" src={topBlobs} alt="Top blobs"/>
-        <img className="bottom--image" src={bottomBlobs} alt="Bottom blobs"/> */}
+        <div className="blob1">
+          <img src={topBlobs} alt="Top blobs"/>
+        </div>
         <div className='content-container'>
           {started ?
           <div className='start-content-container'>
