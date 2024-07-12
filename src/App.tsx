@@ -1,5 +1,6 @@
 import './App.css';
 import topBlobs from './assets/top_blobs.png';
+import bottomBlobs from './assets/bottom_blobs.png';
 import { useEffect, useState } from 'react';
 import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
@@ -101,9 +102,12 @@ function App() {
   return (
     <main>
       <div className="main--container">
-        <div className="blob1">
-          <img src={topBlobs} alt="Top blobs"/>
-        </div>
+          <div className="blob1">
+            <img src={topBlobs} alt="Top blobs"/>
+          </div>
+          <div className="blob2">
+            <img src={bottomBlobs} alt="Top blobs"/>
+          </div>
         <div className='content-container'>
           {started ?
           <div className='start-content-container'>

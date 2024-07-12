@@ -13,40 +13,33 @@ body {
 }
 
 .main--container {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #F5F7FB;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
-
-/* ============MAIN CONTAINER============ */
-.blob1 {
+.blob1{
   position: absolute;
   top: 0;
+  right: 0;
+}
+.blob2{
+  position: absolute;
+  bottom: 0;
   left: 0;
-  width: 50vmax;
-  animation: move1 10s ease-in-out infinite;
-  transform-origin: 50% 50%;
+  height: 80px;
 }
-
-@keyframes move1 {
-  0%   { transform: scale(1)   translate(-60px, -50px); }
-  38%  { transform: scale(0.8) translate(30vw, 30vh) rotate(160deg); }
-  40%  { transform: scale(0.8) translate(30vw, 30vh) rotate(160deg); }
-  78%  { transform: scale(1.5) translate(-20vw, 50vh) rotate(-20deg); }
-  80%  { transform: scale(1.5) translate(-20vw, 50vh) rotate(-20deg); }
-  100% { transform: scale(1)   translate(-60px, -50px); }
-}
+/* ============MAIN CONTAINER============ */
 .content-container{
   z-index: 10;
   max-width: 950px;
 }
 
 .content-container {
-  padding-top: 0 16px;
-
+  width: 100vw;
 }
 
 /* ============START============ */
@@ -55,6 +48,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
 }
 
 .end-div{
@@ -144,7 +138,7 @@ body {
   border: 1px solid rgba(41, 50, 100, .4);
 }
 .quiz-container hr {
-  width: 400px;
+  width: 90vw;
   border: none;
   border-top: 1px solid #ccc;
   margin-top: 0.5rem;
@@ -169,7 +163,27 @@ body {
 }
 
 /* =========== BREAKPOINT =========== */
+@media  only screen and (max-width: 350px){
+  .blob1 img, .blob2 img{
+    width: 10rem;
+    height: 7rem;
+  }
+  .quiz--title{
+    font-size: 0.6rem;
+  }
+  .answer{
+    font-size: .5rem;
+    margin-bottom: .1rem;
+  }
+  .check{
+    font-size: .7rem;
+  }
+}
 @media  only screen and (min-width: 350px){
+  .blob1 img, .blob2 img{
+    width: 10rem;
+    height: 7rem;
+  }
   .quiz--title{
     font-size: 0.85rem;
   }
@@ -180,6 +194,11 @@ body {
 }
 
 @media  only screen and (min-width: 400px){
+  .blob1 img, .blob2 img{
+    width: 10rem;
+    height: 7rem;
+  }
+
   .quiz--title{
     font-size: 1.1rem;
   }
